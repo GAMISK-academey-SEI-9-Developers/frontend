@@ -9,7 +9,8 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
-
+import CarIndex from "./cars/CarIndex";
+import CarCreate from "./cars/CarCreate";
 class App extends Component {
   constructor () {
     super()
@@ -50,7 +51,17 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
-  
+          {/* ------------ */}
+          
+          <AuthenticatedRoute user={user} exact path='/cars' render={()=>(
+            <CarIndex user={user} />
+            
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/cars/new' render={()=>(
+            <CarCreate user={user} />
+            
+          )}/>
+          {/* ------------ */}
 
         </main>
       </React.Fragment>
