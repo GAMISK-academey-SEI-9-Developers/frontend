@@ -14,6 +14,8 @@ import CarCreate from "./cars/CarCreate";
 import CreateTrip from "./auth/trip/createTrip"
 import TripIndex from "./auth/trip/TripIndex"
 import ShowTip from './auth/trip/showTrip'
+import CarShow from './cars/CarShow'
+import CarEdit from "./cars/CarEdit";
 class App extends Component {
   constructor () {
     super()
@@ -38,10 +40,12 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header user={user} />
-        {alerts.map((alert, index) => (
+        {/* {alerts.map((alert, index) => (
           <AlertDismissible key={index} variant={alert.type} message={alert.message} />
-        ))}
-        <main className="container">
+        ))} */}
+        {/* <main className="container"> */}
+        <div className="auth-wrapper">
+        <div className="auth-inner">
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
           )} />
@@ -64,7 +68,7 @@ class App extends Component {
             <ShowTip user={user} />
             
           )}/>
-          <AuthenticatedRoute user={user} exact path='/cars/new' render={()=>(
+          <AuthenticatedRoute user={user} exact path='/create' render={()=>(
             <CarCreate user={user} />
             
           )}/>
@@ -72,14 +76,20 @@ class App extends Component {
             <TripIndex user={user} />
             
           )}/>
-            <Route user={user} exact path='/trips/new' render={()=>(
+            <Route user={user} exact path='/tripsnew' render={()=>(
             <CreateTrip user={user} />
             
           )}/>
+          <AuthenticatedRoute user={user} exact path='/cars/:carid' render={(props)=>(
+            <CarShow user={user} carid={props.match.params.carid}/>
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/cars/:carid/edit' render={()=>(
+            <CarEdit user={user} />
          
-          {/* ------------ */}
+            )}/>
 
-        </main>
+          </div></div>
+        {/* </main> */}
       </React.Fragment>
     )
   }

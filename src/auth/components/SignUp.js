@@ -40,11 +40,15 @@ class SignUp extends Component {
     const { email, password, passwordConfirmation } = this.state
 
     return (
+      <div className="card d-flex align-items-center border-n" >
+      <div className="card col-md-6  col-sm-12 py-1 my-5 backgg rounded-">
+
+
       <form className='auth-form' onSubmit={this.onSignUp}>
         <h3>Sign Up</h3>
-
+        <div className="form-group">
         <label htmlFor="email">Email</label>
-        <input
+        <input className="form-control"
           required
           name="email"
           value={email}
@@ -53,7 +57,7 @@ class SignUp extends Component {
           onChange={this.handleChange}
         />
         <label htmlFor="password">Password</label>
-        <input
+        <input className="form-control"
           required
           name="password"
           value={password}
@@ -62,7 +66,7 @@ class SignUp extends Component {
           onChange={this.handleChange}
         />
         <label htmlFor="passwordConfirmation">Confirm Password</label>
-        <input
+        <input className="form-control"
           required
           name="passwordConfirmation"
           value={passwordConfirmation}
@@ -70,8 +74,13 @@ class SignUp extends Component {
           placeholder="Confirm Password"
           onChange={this.handleChange}
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+        </div>
       </form>
+
+
+      </div>
+      </div>
     )
   }
 }

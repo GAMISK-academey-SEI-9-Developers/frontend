@@ -1,0 +1,11 @@
+.back-card{
+    background-image:url(https://wallup.net/wp-content/uploads/2019/09/617497-mercedes-sls-amg-cars-desert-speed-motors-golden-road-1-748x468.jpg) ;
+    background-size: cover;
+    padding: 15% 0px ;
+}
+.back-card-child{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.big-card{
+    border: none !important;
+}
