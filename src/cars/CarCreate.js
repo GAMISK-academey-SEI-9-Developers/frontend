@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { create } from "./api";
 import {withRouter} from 'react-router-dom'
-
+import "./car.css";
 class CarCreate extends Component {
     state = { 
         car:{ 
             model:"",
             year:'',
             color:'',
-            seets:'',
+            seets:0,
 
         }
        
@@ -35,10 +35,13 @@ class CarCreate extends Component {
 
     render() { 
         return ( 
-            <div>
+            <div className="card d-flex align-items-center back-card " >
+                
+                <div className="card col-md-6  col-sm-12  d-flex align-items-center back-card-child ">
+                
                 <form onSubmit={this.handleSubmit}>
-                    <button type="submit">save</button><br></br>
-                    <label >Car Model :</label>
+                <h3>Car information</h3>
+                    <label >Car Model :</label><br></br>
                     <input
                     type="text"
                     name="model"
@@ -46,7 +49,7 @@ class CarCreate extends Component {
                     onChange={this.handleChange} />
                     <br></br>
 
-                    <label >Car Year :</label>
+                    <label >Car Year :</label><br></br>
                     <input
                     type="number"
                     name="year"
@@ -54,7 +57,7 @@ class CarCreate extends Component {
                     onChange={this.handleChange} />
                     <br></br>
 
-                    <label >Car Color :</label>
+                    <label >Car Color :</label><br></br>
                     <input
                     type="text"
                     name="color"
@@ -62,17 +65,18 @@ class CarCreate extends Component {
                     onChange={this.handleChange} />
                     <br></br>
 
-                    <label >Car Seets :</label>
+                    <label >Car Seets :</label><br></br>
                     <input
-                    type="text"
+                    type="number"
                     name="seets"
                     value={this.state.car.seets}
                     onChange={this.handleChange} />
 
-                    
+                    <br></br>
+<button type="submit" className="btn btn-primary mt-2 btn-green">save</button><br></br>
                     
                 </form>
-
+            </div>
             </div>
          );
     }
