@@ -4,6 +4,8 @@ import TripEdit from './TripEdit'
 import PassengerCard from './passengerCard'
 import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import TripInfo from './tripInfo'
+
 class TripIndex extends Component {
     constructor(props) {
         super(props);
@@ -20,7 +22,7 @@ class TripIndex extends Component {
         show(user,tripId)
         .then(response =>{
             copy.trip = response.data.trip
-            console.log(this.props.user._id)
+            console.log(copy.trip)
             if (copy.trip.owner ==this.props.user._id){
                 copy.isOWner =true
             }
@@ -59,42 +61,38 @@ deletepassenger =(pass)=>{
 
     onEdite=()=>{
         let copy = {...this.state}
-        copy.isupdte= true
-        this.setState({copy})
+        copy.isupdte= !copy.isupdte
+        this.setState(copy)
     }
 
     render() { 
         return ( 
              <div>
+                  <div className='card mt-5 py-5'>
+             
+             <TripInfo trip={this.state.trip}/>
+         </div>
+                 {(this.state.isupdte)? <TripEdit/>:null
+             }
             {this.state.isOWner&&<div>
-            <botton onClick={this.onEdite}>Eidt</botton>
+            <button type="button" class="btn btn-primary mt-5" onClick={this.onEdite}>Edit</button>
             <h2>waiting passengers</h2>
+            {(this.state.trip.waitingPassengers.length)?<div>
             <ul>{this.state.trip.waitingPassengers.map(passenger=>{return(<div>
-            <PassengerCard passengers={passenger}/>
-            <button onCklick={this.addpassenger}>addPassenger</button>
-            <span>< button onCklick={this.deletepassenger}>Passenger</button>
-            </span>
+            <PassengerCard passengers={passenger} addpassenger={this.addpassenger} deletepassenger={this.deletepassenger} />
             </div>)})}
-            </ul>
+            </ul></div>:<p>no witing passengers yet!</p>}
+            <br/>
             <h2>Conformed passengers</h2>
+            {(this.state.trip.Passengers.length)?<div>
             <ul>{this.state.trip.Passengers.map(passenger=>{return(<div>
-            <passengerCard passenger={passenger}/>
-            <button onCklick={this.addpassenger}>addPassenger</button>
-            <span>< button onCklick={this.deletepassenger}>Passenger</button>
-            </span>
+            <passengerCard passenger={passenger} addpassenger={this.addpassenger} deletepassenger={this.deletepassenger}/>
             </div>)})}
-            </ul>
+            </ul></div> : <h3>no passengers conformed yet</h3>}
             </div>}
-            {this.state.isupdteisupdate&&<div>
-            <TripEdit/>
-             </div>}
-            <h5>from:{`${this.state.trip.Destenation}`}</h5> 
-            <h5>to:{`${this.state.trip.Depature}`}</h5>
-             <h5>date:{this.state.trip.date}</h5>
-            <h5>avilable seats:{this.state.trip.abailable_seates}</h5>
-        
-             </div>
-
+            
+        </div>
+            
                     )
                 }
             
