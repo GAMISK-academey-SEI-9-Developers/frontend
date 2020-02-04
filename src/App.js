@@ -11,6 +11,9 @@ import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
 import CarIndex from "./cars/CarIndex";
 import CarCreate from "./cars/CarCreate";
+import CreateTrip from "./auth/trip/createTrip"
+import TripIndex from "./auth/trip/TripIndex"
+import ShowTip from './auth/trip/showTrip'
 class App extends Component {
   constructor () {
     super()
@@ -57,10 +60,23 @@ class App extends Component {
             <CarIndex user={user} />
             
           )}/>
+            <AuthenticatedRoute user={user} exact path='/trips/:id' render={(props)=>(
+            <ShowTip user={user} />
+            
+          )}/>
           <AuthenticatedRoute user={user} exact path='/cars/new' render={()=>(
             <CarCreate user={user} />
             
           )}/>
+            <AuthenticatedRoute user={user} exact path='/trips' render={()=>(
+            <TripIndex user={user} />
+            
+          )}/>
+            <Route user={user} exact path='/trips/new' render={()=>(
+            <CreateTrip user={user} />
+            
+          )}/>
+         
           {/* ------------ */}
 
         </main>
