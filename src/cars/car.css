@@ -6,3 +6,6 @@
 .back-card-child{
     background-color: rgba(255, 255, 255, 0.5);
 }
+.big-card{
+    border: none !important;
+}

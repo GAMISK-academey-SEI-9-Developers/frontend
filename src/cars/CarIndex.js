@@ -1,6 +1,7 @@
 import React ,{Component} from 'react'
 import { index,destroy } from "./api";
 import { Link } from 'react-router-dom'
+import "./car.css";
 
 
 class CarIndex extends Component {
@@ -20,7 +21,7 @@ class CarIndex extends Component {
         .catch(err=>console.error(err))
     }
     destroyHandler=(id)=>{
-        console.log(id)
+        
         const user =this.props.user
         destroy(user,id)
         .then(()=>{alert('Delete')})
@@ -34,20 +35,19 @@ class CarIndex extends Component {
     }
     render() { 
         return ( 
-            <div>
-                <h1>this is car index</h1>
+            <div className="card d-flex align-items-center big-card" >
+                <div className="card col-md-6  align-items-center col-sm-12 back-card-child ">
                 {this.state.cars.map((car)=>{
                     return(
-                        <div key={car._id}>
-                        <h5>modle: <Link to={`/cars/${car._id}`} >{car.model}</Link></h5> 
-                        {/* <h5>Model:{car.model}</h5>
-                        <h5>color:{car.color}</h5>
-                        <h5>passenger:{car.passenger}</h5> */}
-                        <button onClick={()=> this.destroyHandler(car._id)}>delete</button>
+                        <div key={car._id} className=" card-body" >
+                        <h5 class="card-title" >model : {car.model}</h5> 
+                       <button class="btn btn-info mx-1"> <Link to={`/cars/${car._id}`} style={{color:"white"}} >show</Link></button>
+                        <button  class="btn btn-danger mx-1" onClick={()=> this.destroyHandler(car._id)}>delete</button>
                         </div>
 
                     )
                 })}
+            </div>
             </div>
          );
     }

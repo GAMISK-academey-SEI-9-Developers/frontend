@@ -6,7 +6,7 @@ import './Header.scss'
 const authenticatedOptions = (
   <React.Fragment>
 
-    <Link to='/cars'>cars</Link>
+    <Link to='/trips'>trips</Link>
     <Link to='/create'>New Cars</Link>
 
     <Link to="/change-password">Change Password</Link>
