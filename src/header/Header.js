@@ -5,12 +5,20 @@ import './Header.scss'
 
 const authenticatedOptions = (
   <React.Fragment>
-
-    <Link to='/trips'>trips</Link>
-    <Link to='/create'>New Cars</Link>
-
-    <Link to="/change-password">Change Password</Link>
-    <Link to="/sign-out">Sign Out</Link>
+ <li class="nav-item btn-light  ">
+    <Link to='/trips'class="nav-link "style={{color:"black"}}  >Trips </Link>
+  </li>
+  <li class="nav-item btn-light  ">
+    <Link class="nav-link "style={{color:"black"}} to='/create'>New Cars</Link>
+  </li>
+   
+  <li class="nav-item btn-light  ">
+    <Link class="nav-link "style={{color:"black"}} to="/change-password">Change Password</Link>
+  </li>
+  <li class="nav-item btn-light  ">
+    <Link class="nav-link "style={{color:"black"}} to="/sign-out">Sign Out</Link>
+  </li>
+   
   </React.Fragment>
 )
 
@@ -45,7 +53,7 @@ const Header = ({ user }) => (
 
   <ul class="nav grey lighten-4  rounded-lg ml-auto">
    
-  <li class="nav-item"> 
+  <li class="nav-item" > 
   { user && <span>Welcome, {user.email}</span>}  
   </li>
 

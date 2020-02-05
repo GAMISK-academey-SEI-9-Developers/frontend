@@ -11,10 +11,13 @@ export const index = (user) => {
         }
     })
 }
-export const show = (id) => {
+export const show = (user,id) => {
     return axios({
         url: apiUrl + "/cars/" + id,
-        method: "get"
+        method: "get",
+        headers:{
+        "Authorization":`Bearer ${user.token}`
+    }
     })
 }
 export const create = (car,user) => {
@@ -30,12 +33,15 @@ export const create = (car,user) => {
 
     })
 }
-export const update = (car, id) => {
+export const update = (user , car, id) => {
     return axios({
         url: apiUrl + "/cars/" + id,
-        method: "put",
+        method: "patch",
         data: {
             car: car
+        },
+        headers:{
+            "Authorization":`Bearer ${user.token}`
         }
     })
 }

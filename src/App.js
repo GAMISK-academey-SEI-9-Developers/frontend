@@ -16,6 +16,7 @@ import TripIndex from "./auth/trip/TripIndex"
 import ShowTip from './auth/trip/showTrip'
 import CarShow from './cars/CarShow'
 import CarEdit from "./cars/CarEdit";
+import Footer from './header/footer'
 class App extends Component {
   constructor () {
     super()
@@ -90,6 +91,7 @@ class App extends Component {
 
           </div></div>
         {/* </main> */}
+        <Footer />
       </React.Fragment>
     )
   }
