@@ -50,8 +50,8 @@ export const update = (trip, id,user) => {
 
 export const addPassengers = (user,tripId,pass) => {
     return axios({
-        url: apiUrl + "/trips/" +tripId+'passengers',
-        method: "patch",
+        url: apiUrl + "/trips/" +tripId+'/passengers',
+        method: "put",
         headers:{
             "Authorization":`Bearer ${user.token}`
         },
@@ -64,7 +64,7 @@ export const addPassengers = (user,tripId,pass) => {
 export const deletePassenger = (user,tripId,pass) => {
     return axios({
         url: apiUrl + "/trips/" + tripId+'/passengers',
-        method: "patch",
+        method: "delete",
         headers:{
             "Authorization":`Bearer ${user.token}`
         },

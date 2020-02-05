@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import { update } from "./api";
 import {withRouter} from 'react-router-dom'
-
+import {
+    Button,
+    Checkbox,
+    Form,
+    Input,
+    Radio,
+    Select,
+    TextArea,
+  } from 'semantic-ui-react'
 class EditTrip extends Component {
     state = { 
         trip:{
@@ -26,8 +34,8 @@ class EditTrip extends Component {
          const user =this.props.user
 
          update(this.state.trip,user)
-         .then(() => alert('created'))
-         .then(() => this.props.history.push('/trips'))
+         .then(() => alert('updated'))
+         .then(() => this.props.history.push(`/trips/${this.state.trip._id}`))
         .catch(err=>console.error(err))
      }
 
@@ -54,60 +62,49 @@ class EditTrip extends Component {
     render() { 
         return ( 
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <button type="submit">save</button><br></br>
-                    <label className='date' >Date :</label>
-                    <br/>
-                    <label className='date' >Day :</label>
-                    <input
-                    type="number"
-                    name="day"
-                    value={this.state.enternedDate.day}
-                    onChange={this.handleChangeDate} />
-                    <br></br>
-                    
-                    <label >month :</label>
-                    <input
-                    type="number"
-                    name="month"
-                    value={this.state.enternedDate.month}
-                    onChange={this.handleChangeDate} />
-                    <br></br>
-                    <label >year :</label>
-                    <input
-                    type="number"
-                    name="year"
-                    value={this.state.enternedDate.year}
-                    onChange={this.handleChangeDate} />
-                    <br></br>
-                    <label >from:</label>
-                    <input
-                    type="number"
-                    name="year"
-                    value={this.state.trip.Destenation}
-                    onChange={this.handleChange} />
-                    <br></br>
+                {
+                <Form>
+        <Form.Group widths='equal'>
+        <label>Date</label>
+          <Form.Field
+          value={this.state.enternedDate.day}
+          onChange={this.handleChangeDate}
+            control={Input}
+            label='Day'
+            name='day'
+            type='date'
+            placeholder='e.g. 01'
+          />
+          <label>Quantity</label>
+          <Form.Field
+          value={this.state.trip.Depature}
+          onChange={this.handleChange}
+            control={Input}
+            label='From'
+            name='Depature'
+            placeholder='e.g. Makkah'
+          />
+         <Form.Field
+          value={this.state.trip.Destination}
+          onChange={this.handleChange}
+            control={Input}
+            label='To'
+            placeholder='e.g. Makkah'
+            name='Destination'
+          />
+           <Form.Field
+          value={this.state.trip.abailable_seates}
+          onChange={this.handleChange}
+            control={Input}
+            label='available Seats:'
+            placeholder='e.g. 2'
+            name='abailable_seates'
+          />
 
-                    <label >to:</label>
-                    <input
-                    type="text"
-                    name="color"
-                    value={this.state.trip.Depature}
-                    onChange={this.handleChange} />
-                    <br></br>
+        </Form.Group>
 
-                    <label >available Seats:</label>
-                    <input
-                    type="text"
-                    name="seets"
-                    value={this.state.trip.abailable_seates}
-                    onChange={this.handleChange} />
-
-                    
-                    
-                </form>
-
-            </div>
+        </Form>
+    }</div>
          );
     }
 }
