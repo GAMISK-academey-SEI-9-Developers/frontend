@@ -91,7 +91,7 @@ class App extends Component {
 
           </div></div>
         {/* </main> */}
-        <Footer />
+        {/* <Footer /> */}
       </React.Fragment>
     )
   }

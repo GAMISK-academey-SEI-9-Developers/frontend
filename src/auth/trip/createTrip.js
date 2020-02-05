@@ -55,17 +55,17 @@ class CreateTrip extends Component {
                     <button type="submit">save</button><br></br>
                     <label className='date' >Date :</label>
                     <br/>
-                    <label className='date' >Day :</label>
-                    <input
-                    type="number"
-                    name="day"
-                    value={this.state.enternedDate.day}
-                    onChange={this.handleChangeDate} />
-                    <br></br>
                     
+                    <input
+                    type="date"
+                    name="date"
+                    value={this.state.trip.date}
+                    onChange={this.handleChange} />
+                    <br></br>
+{/*                     
                     <label >month :</label>
                     <input
-                    type="number"
+                    type=""
                     name="month"
                     value={this.state.enternedDate.month}
                     onChange={this.handleChangeDate} />
@@ -75,7 +75,7 @@ class CreateTrip extends Component {
                     type="number"
                     name="year"
                     value={this.state.enternedDate.year}
-                    onChange={this.handleChangeDate} />
+                    onChange={this.handleChangeDate} /> */}
                     <br></br>
                     <label >from:</label>
                     <input
@@ -95,8 +95,8 @@ class CreateTrip extends Component {
 
                     <label >available Seats:</label>
                     <input
-                    type="text"
-                    name="seets"
+                    type="number"
+                    name="abailable_seates"
                     value={this.state.trip.abailable_seates}
                     onChange={this.handleChange} />
 

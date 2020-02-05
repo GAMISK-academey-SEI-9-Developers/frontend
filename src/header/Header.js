@@ -9,6 +9,9 @@ const authenticatedOptions = (
     <Link to='/trips'class="nav-link "style={{color:"black"}}  >Trips </Link>
   </li>
   <li class="nav-item btn-light  ">
+    <Link to='/tripsnew'class="nav-link "style={{color:"black"}}  >New Trips </Link>
+  </li>
+  <li class="nav-item btn-light  ">
     <Link class="nav-link "style={{color:"black"}} to='/create'>New Cars</Link>
   </li>
    
@@ -54,7 +57,7 @@ const Header = ({ user }) => (
   <ul class="nav grey lighten-4  rounded-lg ml-auto">
    
   <li class="nav-item" > 
-  { user && <span>Welcome, {user.email}</span>}  
+  { user && <span style={{color:"white",fontWeight:"bold"}}>Welcome, {user.email.substring(0,user.email.indexOf("@"))}</span>}  
   </li>
 
   { alwaysOptions }
