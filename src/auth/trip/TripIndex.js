@@ -1,7 +1,8 @@
 import React ,{Component} from 'react'
 import { index,destroy,show,addWaitingPassenger } from "./api";
 import {withRouter} from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
+import { Card } from 'semantic-ui-react'
 class TripIndex extends Component {
     constructor(props) {
         super(props);
@@ -40,20 +41,16 @@ class TripIndex extends Component {
     render() { 
         return ( 
             <div>
-                <h1>all trips</h1>
+                <h1>All trips</h1>
                 {this.state.trips.map((trip)=>{
                     return(
-                        <div>
-                        <h5>from: {trip.Destenation}</h5> 
-                        <h5>to:{trip.Depature}</h5>
-                        <h5>date:{trip.date}</h5>
-                        <h5>avilable seats:{trip.abailable_seates}</h5>
-                        <button onClick={()=>this.join(trip._id)}>Join</button>
-                        <Link to = {`/trips/${trip._id}`}>see</Link>
-                        </div>
-
-                    )
-                })}
+                        <Card as={Link} to={`/trips/${trip._id}`}
+    header={`from: ${trip.Destenation}  to: ${trip.Depature}`}
+    meta={`avilable seats: ${trip.abailable_seates}`}
+    description={[`date: ${Date(trip.date).toString()}` ].join(" , ")}
+  />
+                   
+                )})}
             </div>
          );
     }

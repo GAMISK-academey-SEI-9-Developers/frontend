@@ -5,6 +5,8 @@ import PassengerCard from './passengerCard'
 import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import TripInfo from './tripInfo'
+import { Card } from 'semantic-ui-react'
+import { Button, Image } from 'semantic-ui-react'
 
 class TripIndex extends Component {
     constructor(props) {
@@ -32,24 +34,16 @@ class TripIndex extends Component {
     }
 
 
-// showHandler=(id)=>{
-//         console.log(id)
-//         const user =this.props.user
-//         show(user,id)   
-//         .then(()=>{ 
-//             const trip = this.state.trip.filter(trip=>trip._id !== id)
-//             this.setState({trip})
-//         })
-//         .catch(err=>console.log(err))
-//     }
 
 
-addpassenger=(pass)=>{
-        addPassengers(this.props.user,this.state.trip._id,pass._id)
+addpassenger=(passId)=>{
+   
+        addPassengers(this.props.user,this.state.trip._id,passId)
+        .then(()=>{
         let trip = {...this.state.trip}
-        trip.Passengers.concat(trip.watingPassengers.filter(passenger=>{return(passenger._id==pass._id)}))
-        trip.watingPassengers.filter(passenger=>{return(passenger._id==pass._id)})
-        this.setState({trip})        
+        trip.Passengers.concat(trip.watingPassengers.filter(passenger=>{return(passenger._id==passId)}))
+        trip.watingPassengers.filter(passenger=>{return(passenger._id==passId)})
+        this.setState({trip}) } )      
     }
 
 deletepassenger =(pass)=>{
@@ -75,20 +69,38 @@ deletepassenger =(pass)=>{
                  {(this.state.isupdte)? <TripEdit/>:null
              }
             {this.state.isOWner&&<div>
-            <button type="button" class="btn btn-primary mt-5" onClick={this.onEdite}>Edit</button>
+            <button type="button" class="btn btn-primary mt-5 center-block" onClick={this.onEdite}>Edit</button>
             <h2>waiting passengers</h2>
             {(this.state.trip.waitingPassengers.length)?<div>
-            <ul>{this.state.trip.waitingPassengers.map(passenger=>{return(<div>
-            <PassengerCard passengers={passenger} addpassenger={this.addpassenger} deletepassenger={this.deletepassenger} />
-            </div>)})}
-            </ul></div>:<p>no witing passengers yet!</p>}
+                <Card.Group>
+            {this.state.trip.waitingPassengers.map(passenger=>{return(
+               
+            <PassengerCard 
+            passengers={passenger} 
+            addPassengers={this.addpassenger}
+             deletepassenger={this.deletepassenger}
+              wating={true} />
+           
+           )})}
+            
+            </Card.Group></div>:<p>no witing passengers yet!</p>}
             <br/>
             <h2>Conformed passengers</h2>
-            {(this.state.trip.Passengers.length)?<div>
-            <ul>{this.state.trip.Passengers.map(passenger=>{return(<div>
-            <passengerCard passenger={passenger} addpassenger={this.addpassenger} deletepassenger={this.deletepassenger}/>
-            </div>)})}
-            </ul></div> : <h3>no passengers conformed yet</h3>}
+            {
+            (this.state.trip.Passengers.length)?
+            <Card.Group>
+            {this.state.trip.Passengers.map(passenger=>{return(
+               
+            <PassengerCard 
+            passengers={passenger} 
+            addPassengers={this.addpassenger}
+             deletepassenger={this.deletepassenger}
+              wating={false} />
+           
+           )})}
+            
+            </Card.Group>:<p>no witing passengers yet!</p>}
+           : <p>no passengers conformed yet</p>}
             </div>}
             
         </div>
