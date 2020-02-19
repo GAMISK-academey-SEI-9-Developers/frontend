@@ -2,7 +2,12 @@ $success: #c7f282;
 $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
-
+.card{
+  border : none !important
+}
+body{
+  background:rgb(0, 51, 77) ;
+}
 .flash-success,
 .flash-warning,
 .flash-error {

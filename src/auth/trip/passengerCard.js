@@ -26,7 +26,7 @@ render(){
 return (
   <React.Fragment>
    {this.props.passengers &&
-  <Card className=" mt-5">
+  <Card className=" mt-5" >
    
     <Card.Content>
       <Image

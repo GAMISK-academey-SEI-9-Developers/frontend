@@ -7,6 +7,7 @@
     background-color: rgba(255, 255, 255, 0.5);
     display: flex;
     flex-direction: column;
+    border: none !important;
 }
 .big-card{
     border: none !important;

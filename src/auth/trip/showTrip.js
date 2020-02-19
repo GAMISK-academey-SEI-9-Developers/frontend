@@ -100,23 +100,25 @@ class TripIndex extends Component {
 
   render() {
     return (
-      <div className=" card">
-        <div className="card my-5 py-5">
+      <div className=" container ">
+        <div className="card my-1 py-5 ">
           <TripInfo trip={this.state.trip} />
           
         </div>
 
         {this.state.isupdte ? <TripEdit /> : null}
-        {this.state.isOWner && ( <React.Fragment> <button
-              type="button"
-              class="btn btn-primary my-2 "
+        {this.state.isOWner && ( <React.Fragment> 
+          <button
+            type="button"
+            class="btn btn-success my-2 mx-1 by-2 "
+             
               onClick={this.onEdite}
             >
               Edit
             </button>
             <button
             type="button"
-            class="btn btn-danger my-2 "
+            class="btn btn-danger my-2 by-2 "
             onClick={this.deleteTrip}
           >
             delete

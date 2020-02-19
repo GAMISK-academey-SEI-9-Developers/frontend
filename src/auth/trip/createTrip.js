@@ -50,9 +50,10 @@ class CreateTrip extends Component {
 
     render() { 
         return ( 
-            <div>
+            <div className="container" >
+                <div className="card d-flex align-items-center " style={{}}>
                 <form onSubmit={this.handleSubmit}>
-                    <button type="submit">save</button><br></br>
+                    
                     <label className='date' >Date :</label>
                     <br/>
                     
@@ -62,22 +63,9 @@ class CreateTrip extends Component {
                     value={this.state.trip.date}
                     onChange={this.handleChange} />
                     <br></br>
-{/*                     
-                    <label >month :</label>
-                    <input
-                    type=""
-                    name="month"
-                    value={this.state.enternedDate.month}
-                    onChange={this.handleChangeDate} />
+
                     <br></br>
-                    <label >year :</label>
-                    <input
-                    type="number"
-                    name="year"
-                    value={this.state.enternedDate.year}
-                    onChange={this.handleChangeDate} /> */}
-                    <br></br>
-                    <label >from:</label>
+                    <label >from:</label><br/>
                     <input
                     type="text"
                     name="Depature"
@@ -85,7 +73,7 @@ class CreateTrip extends Component {
                     onChange={this.handleChange} />
                     <br></br>
 
-                    <label >to:</label>
+                    <label >to:</label><br/>
                     <input
                     type="text"
                     name="Destenation"
@@ -93,17 +81,18 @@ class CreateTrip extends Component {
                     onChange={this.handleChange} />
                     <br></br>
 
-                    <label >available Seats:</label>
+                    <label >available Seats:</label><br/>
                     <input
                     type="number"
                     name="abailable_seates"
                     value={this.state.trip.abailable_seates}
                     onChange={this.handleChange} />
-
+                    <br></br>
+                    <button className="btn btn-success" type="submit">save</button><br></br>
                     
                     
                 </form>
-
+                </div>
             </div>
          );
     }

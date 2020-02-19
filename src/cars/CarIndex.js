@@ -35,10 +35,10 @@ class CarIndex extends Component {
     }
     render() { 
         return ( 
-            <div className="card d-flex align-items-center big-card" >
+            <div className="card d-flex align-items-center big-card mt-5" >
                
                 <div className="card col-md-6  align-items-center col-sm-12 back-card-child ">
-                     CARS
+                      <strong>CARS</strong>
                 {this.state.cars.map((car)=>{
                     return(
                         <div className="card  ">

@@ -39,16 +39,20 @@ class App extends Component {
     const { alerts, user } = this.state
 
     return (
-      <React.Fragment>
+      <React.Fragment >
         <Header user={user} />
         {/* {alerts.map((alert, index) => (
           <AlertDismissible key={index} variant={alert.type} message={alert.message} />
         ))} */}
         {/* <main className="container"> */}
         <div className="auth-wrapper">
-        <div className="auth-inner">
+        <div className="auth-inner"style={{border :" none !important"}}>
           <Route path='/sign-up' render={() => (
             <SignUp alert={this.alert} setUser={this.setUser} />
+          )} />
+          <Route path='/' exact render={() => (<div className="text-align-center my-5 mx-5">
+            <h1 style={{color:"white", fontWeight:"12% "}}>We Are here to Save the Day!</h1>
+            </div>
           )} />
           <Route path='/sign-in' render={() => (
             <SignIn alert={this.alert} setUser={this.setUser} />
