@@ -35,16 +35,19 @@ class CarIndex extends Component {
     }
     render() { 
         return ( 
-            <div className="card d-flex align-items-center big-card" >
+            <div className="card d-flex align-items-center big-card mt-5" >
+               
                 <div className="card col-md-6  align-items-center col-sm-12 back-card-child ">
+                      <strong>CARS</strong>
                 {this.state.cars.map((car)=>{
                     return(
+                        <div className="card  ">
                         <div key={car._id} className=" card-body" >
                         <h5 class="card-title" >model : {car.model}</h5> 
                        <button class="btn btn-info mx-1"> <Link to={`/cars/${car._id}`} style={{color:"white"}} >show</Link></button>
                         <button  class="btn btn-danger mx-1" onClick={()=> this.destroyHandler(car._id)}>delete</button>
                         </div>
-
+                        </div>
                     )
                 })}
             </div>

@@ -40,17 +40,19 @@ class TripIndex extends Component {
     
     render() { 
         return ( 
-            <div>
+            <div  class="container" >
+                <div  class="row" >
                 <h1>All trips</h1>
                 {this.state.trips.map((trip)=>{
                     return(
-                        <Card as={Link} to={`/trips/${trip._id}`}
+                        <Card className="my-2" as={Link} to={`/trips/${trip._id}`}
     header={`from: ${trip.Destenation}  to: ${trip.Depature}`}
     meta={`avilable seats: ${trip.abailable_seates}`}
-    description={[`date: ${Date(trip.date).toString()}` ].join(" , ")}
+    description={[`date: ${trip.date.toString()}` ].join(" , ")}
   />
                    
                 )})}
+                </div>
             </div>
          );
     }

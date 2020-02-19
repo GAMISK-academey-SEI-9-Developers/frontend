@@ -65,18 +65,22 @@ class CarEdit extends Component{
     render(){
         // console.log(this.props)
         return(
+            <div className="container bx-5" style={{background:"rgba(255,255,255,0)"}}>
+                <div className="card d-felx align-items-center mx-5">
             <form onSubmit={this.handleSubmit}>
-                <label>model </label>
+                <label>model </label><br></br>
                 <input onChange={this.handleChange} type="text" name="model" value={this.state.car.model}/><br></br>
-                <label>year </label>
+                <label>year </label><br></br>
                 <input  onChange={this.handleChange} type="number" name="year" value={this.state.car.year}/><br></br>
-                <label>color </label>
+                <label>color </label><br></br>
                 <input  onChange={this.handleChange} type="text" name="color" value={this.state.car.color}/><br></br>
-                <label>passenger </label>
+                <label>passenger </label><br></br>
                 <input  onChange={this.handleChange} type="number" name="passenger" value={this.state.car.seets}/><br></br>
 
-                <button type="submit">Update</button>
+                <button className="btn btn-success" type="submit">Update</button>
         </form>
+        </div>
+        </div>
         )
     }
 }

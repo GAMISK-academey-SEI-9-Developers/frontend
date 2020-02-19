@@ -30,10 +30,10 @@ class EditTrip extends Component {
 
      handleSubmit=event=>{
          event.preventDefault()
-         const car =this.state.car
+         
          const user =this.props.user
 
-         update(this.state.trip,user)
+         update(this.state.trip,this.state.trip._id,user)
          .then(() => alert('updated'))
          .then(() => this.props.history.push(`/trips/${this.state.trip._id}`))
         .catch(err=>console.error(err))

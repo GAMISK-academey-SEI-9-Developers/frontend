@@ -73,11 +73,20 @@ export const deletePassenger = (user,tripId,pass) => {
         }
     })
 }
-
+export const destroy = (user,tripId) => {
+    return axios({
+        url: apiUrl + "/trips/" + tripId,
+        method: "delete",
+        headers:{
+            "Authorization":`Bearer ${user.token}`
+        }
+        
+    })
+}
 export const destroyWaitingPassenger = (user,tripId,pass) => {
     return axios({
         url: apiUrl + "/trips/" + tripId+"/WaitingPassengers",
-        method: "delete",
+        method: "put",
         headers:{
             "Authorization":`Bearer ${user.token}`
         },data: {
@@ -91,7 +100,7 @@ export const destroyWaitingPassenger = (user,tripId,pass) => {
 
 export const addWaitingPassenger = (user,tripId) => {
     return axios({
-        url: apiUrl + '/trips'+ tripId+"/WaitingPassengers",
+        url: apiUrl + '/trips/'+ tripId+"/WaitingPassengers",
         method: "put",
         headers:{
             "Authorization":`Bearer ${user.token}`

@@ -23,6 +23,9 @@ $charcoal: #bbb;
 .move-rotation{
   animation: rotation 2s infinite linear;
 }
+footer {
+  background:rgb(0, 51, 77)
+}
 
 @keyframes rotation {
   0% {
